@@ -23,7 +23,8 @@ router.post("/signup", wrapAsync(async (req,res,next)=>{
             req.flash("success","Welcome to Wanderlust!!");//flash msg
             //passport req.session.redirectUrl ko reset krdega login krne ke baad Jo woh og url url aane me issue hoga
             //isiliye req.session.redirectUrl ko locals ke pass save krwa denge ki humesha available ho aur passport locals ko reset nhi kr payege
-            res.redirect(req.session.redirectUrl);
+           let redirectUrl = res.locals.redirectUrl || "/listings";
+           res.redirect(redirectUrl);
 
         });//ye method hai jo passport provide krta hai jo user ko
             
